@@ -25,6 +25,8 @@ rc-update add buildbot-setup default
 rc-update add buildmaster default
 rc-update add buildslave default
 
+usermod -d /buildbot/slave buildbot
+
 wget -O /usr/local/bin/repo \
     https://dl-ssl.google.com/dl/googlesource/git-repo/repo
 chmod 755 /usr/local/bin/repo
