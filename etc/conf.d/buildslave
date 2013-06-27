@@ -1,0 +1,9 @@
+# Path to the build slave's basedir.
+BASEDIR="/buildbot/slave"
+
+# User account for the buildslave.
+# The basedir should be owned by this user.
+USERNAME="buildbot"
+
+# Extra options passed to twistd.
+TWISTD_OPTS=""

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+CHECKOUT=$(dirname "$(dirname "$(readlink -f "$0")")")
+
+if [[ $(id -u) != 0 ]]; then
+    echo "Must run this as root!"
+    exit 1
+fi
+
+if [[ ! -e "$CHECKOUT/etc/buildbot-boto-key.p12" ||
+      ! -e "$CHECKOUT/etc/buildbot-boto" ]]; then
+    echo "Please setup the gsutil credentials in etc/buildbot-boto"
+    exit 1
+fi
+
+set -ex
+rsync -rtv "$CHECKOUT/etc/" "/etc/"
+chmod 644 /etc/buildbot-master.cfg
+chmod 640 /etc/sudoers.d/buildbot /etc/buildbot-boto*
+chmod 755 /etc/buildbot-setup.sh /etc/init.d/buildbot-setup
+eselect python set python2.7
+emerge --sync
+emerge -uDNv world git buildbot buildbot-slave
+rc-update add buildbot-setup default
+rc-update add buildmaster default
+rc-update add buildslave default
+
+wget -O /usr/local/bin/repo \
+    https://dl-ssl.google.com/dl/googlesource/git-repo/repo
+chmod 755 /usr/local/bin/repo

@@ -1,0 +1,18 @@
+#!/sbin/runscript
+
+depend() {
+    before buildmaster
+    before buildslave
+}
+
+start() {
+    ebegin "Setting up $BUILDBOT_MNT"
+    /etc/buildbot-setup.sh
+    eend $?
+}
+
+stop() {
+    ebegin "Unmounting $BUILDBOT_MNT"
+    umount $BUILDBOT_MNT
+    eend $?
+}

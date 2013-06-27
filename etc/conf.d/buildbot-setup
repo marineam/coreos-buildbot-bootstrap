@@ -1,0 +1,3 @@
+# places to put buildbot
+BUILDBOT_DEV=/dev/xvdb
+BUILDBOT_MNT=/buildbot
