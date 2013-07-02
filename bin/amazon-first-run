@@ -16,7 +16,7 @@ fi
 set -ex
 rsync -rtv "$CHECKOUT/etc/" "/etc/"
 chmod 644 /etc/buildbot-master.cfg
-chmod 640 /etc/sudoers.d/buildbot /etc/buildbot-boto*
+chmod 640 /etc/sudoers.d/buildbot /etc/buildbot-boto* /etc/buildbot-ssh-key
 chmod 755 /etc/buildbot-setup.sh /etc/init.d/buildbot-setup
 eselect python set python2.7
 emerge --sync
