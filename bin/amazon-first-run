@@ -8,8 +8,9 @@ if [[ $(id -u) != 0 ]]; then
 fi
 
 if [[ ! -e "$CHECKOUT/etc/buildbot-boto-key.p12" ||
-      ! -e "$CHECKOUT/etc/buildbot-boto" ]]; then
-    echo "Please setup the gsutil credentials in etc/buildbot-boto"
+      ! -e "$CHECKOUT/etc/buildbot-boto" ||
+      ! -e "$CHECKOUT/etc/buildbot-ssh-key" ]]; then
+    echo "Please setup the ssh and gsutil credentials in etc"
     exit 1
 fi
 
