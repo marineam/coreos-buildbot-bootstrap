@@ -6,7 +6,7 @@ source /etc/conf.d/buildbot-setup
 
 mkfs.ext4 $BUILDBOT_DEV
 mkdir -p $BUILDBOT_MNT
-mount -t ext4 $BUILDBOT_DEV $BUILDBOT_MNT
+mount -t ext4 -o noatime,data=writeback $BUILDBOT_DEV $BUILDBOT_MNT
 mkdir -p $BUILDBOT_MNT/{master,slave}
 
 buildbot create-master $BUILDBOT_MNT/master
