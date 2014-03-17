@@ -22,16 +22,4 @@ chmod 644 /etc/buildbot-master.cfg
 chmod 640 /etc/sudoers.d/buildbot /etc/buildbot-boto* \
     /etc/buildbot-gpg-sec.asc /etc/buildbot-ssh-key
 chmod 755 /etc/buildbot-setup.sh /etc/init.d/buildbot-setup
-eselect python set python2.7
-emerge --sync
-emerge -uDNv world git buildbot buildbot-slave
-rc-update add buildbot-setup default
-rc-update add buildmaster default
-rc-update add buildslave default
-
-usermod -d /buildbot/slave buildbot
 chown :buildbot /etc/buildbot-gpg-sec.asc
-
-wget -O /usr/local/bin/repo \
-    https://dl-ssl.google.com/dl/googlesource/git-repo/repo
-chmod 755 /usr/local/bin/repo

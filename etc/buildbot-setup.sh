@@ -19,3 +19,5 @@ cp /etc/buildbot-boto-key.p12 $BUILDBOT_MNT/slave/.boto-key.p12
 mkdir -p $BUILDBOT_MNT/slave/.ssh
 cp /etc/buildbot-ssh-key $BUILDBOT_MNT/slave/.ssh/id_rsa
 chown -R buildbot:buildbot $BUILDBOT_MNT
+su --login --shell /bin/bash \
+    --command "gpg --import /etc/buildbot-gpg-*.asc" buildbot
