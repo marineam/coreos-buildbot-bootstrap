@@ -1,3 +1,5 @@
 etc/buildbot-boto
 etc/buildbot-boto-key.p12
 etc/buildbot-ssh-key
+etc/buildbot-gpg-pub.asc
+etc/buildbot-gpg-sec.asc
