@@ -25,9 +25,11 @@ chmod 755 /etc/buildbot-setup.sh /etc/init.d/buildbot-setup
 eselect python set python2.7
 emerge --sync
 emerge -uDNv world git buildbot buildbot-slave
+cp /etc/init.d/buildslave /etc/init.d/buildslave2
 rc-update add buildbot-setup default
 rc-update add buildmaster default
 rc-update add buildslave default
+rc-update add buildslave2 default
 
 usermod -d /buildbot/slave buildbot
 chown :buildbot /etc/buildbot-gpg-sec.asc
